@@ -86,7 +86,7 @@ pipeline {
     stages {
         stage('clone') {
             steps {
-              git 'https://github.com/ashokitschool/maven-web-app.git'
+              git 'https://github.com/abhischool/maven-web-app.git'
             }
         }
         stage('build'){
@@ -96,14 +96,14 @@ pipeline {
         }
         stage('docker image'){
             steps {
-                sh 'docker build -t ashokit/mavenwebapp .'
+                sh 'docker build -t abhi/mavenwebapp .'
             }
         }
         stage('docker container'){
             steps{
                 sh 'docker stop javaapp'
                 sh 'docker rm javaapp'
-                sh 'docker run -d -p 8081:8080 --name javaapp ashokit/mavenwebapp'
+                sh 'docker run -d -p 8081:8080 --name javaapp abhi/mavenwebapp'
             }
         }
     }
